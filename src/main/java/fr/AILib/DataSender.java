@@ -5,9 +5,9 @@ import java.util.ArrayList;
 /**
  * Basic class for all object that can send data to {@link DataListener}
  */
-public class DataSender {
+public class DataSender<T> {
 
-    protected ArrayList<DataListener> listeners = new ArrayList<>();
+    protected ArrayList<DataListener<T>> listeners = new ArrayList<>();
 
 
     /**
@@ -16,7 +16,7 @@ public class DataSender {
      * @param listener Listener to register
      * @return True if the listener has been correctly registered false otherwise.
      */
-    public boolean registerListener(DataListener listener) {
+    public boolean registerListener(DataListener<T> listener) {
         if (this.listeners.contains(listener)) {
             return false;
         }
@@ -24,7 +24,7 @@ public class DataSender {
         return true;
     }
 
-    protected void sendToAllListeners(Object data) {
+    protected void sendToAllListeners(T data) {
         this.listeners.forEach(l -> l.receive(this, data));
     }
 

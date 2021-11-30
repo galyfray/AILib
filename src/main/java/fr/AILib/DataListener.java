@@ -3,7 +3,7 @@ package fr.AILib;
 /**
  * An interface that represent any objects that can receive data from a {@link DataSender}
  */
-public interface DataListener {
+public interface DataListener<T> {
 
     /**
      * The methode used by a data sender in order to save the data to the data listener
@@ -11,5 +11,5 @@ public interface DataListener {
      * @param sender the object that send the Data
      * @param data   the data sent in order to be calculate or interpret
      */
-    void receive(DataSender sender, Object data);
+    void receive(DataSender<T> sender, T data);
 }
